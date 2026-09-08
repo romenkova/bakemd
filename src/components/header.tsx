@@ -30,7 +30,7 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
                 "transition-colors hover:bg-muted hover:text-foreground"
               )}
             >
-              <SiGithub className="size-4.5" />
+              <SiGithub className="size-4.5" title="GitHub" />
             </a>
           )}
           <ThemeToggle />

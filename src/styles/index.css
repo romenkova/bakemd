@@ -78,10 +78,22 @@
 
 .docs-prose img {
   max-width: 30rem;
+  margin-block: 1.25em;
+  border-radius: var(--radius-lg);
+}
+
+.docs-prose :is(h1, h2, h3, h4) img {
+  display: inline;
+  height: 1em;
+  width: auto;
+  margin: 0;
+  border-radius: 0;
+  vertical-align: -0.125em;
 }
 
 .docs-prose pre {
   border: 1px solid var(--code-border);
+  font-weight: 500;
 }
 
 .docs-prose :not(pre) > code {
