@@ -71,9 +71,20 @@
 }
 
 /* Keep anchored headings clear of the sticky header. */
-.docs-prose h2,
-.docs-prose h3 {
+.docs-prose :is(h2, h3, h4) {
   scroll-margin-top: 4.5rem;
+}
+
+/* Headings link to themselves. */
+.docs-prose :is(h2, h3, h4) a {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.docs-prose :is(h2, h3, h4) a:hover::after {
+  content: " #";
+  color: var(--muted-foreground);
 }
 
 .docs-prose img {

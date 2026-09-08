@@ -65,3 +65,6 @@ Images go in `_public/` and are referenced from the root:
 An image inside a heading renders inline at the text height.
 
 Links between pages use the URL, not the file:
+
+Every heading gets an id from its text, so `[code blocks](/theming#code-blocks)`
+links to a section. Clicking a heading puts its anchor in the address bar.

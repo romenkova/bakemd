@@ -4,7 +4,9 @@ import dockerfile from "highlight.js/lib/languages/dockerfile"
 import md from "highlight.js/lib/languages/markdown"
 import nginx from "highlight.js/lib/languages/nginx"
 import ReactMarkdown, { type ExtraProps } from "react-markdown"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeHighlight from "rehype-highlight"
+import rehypeSlug from "rehype-slug"
 import { common } from "lowlight"
 import remarkGfm from "remark-gfm"
 import { useBase } from "../base"
@@ -41,7 +43,11 @@ export function Markdown({
     <div className={className}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[[rehypeHighlight, { languages }]]}
+        rehypePlugins={[
+          rehypeSlug,
+          [rehypeAutolinkHeadings, { behavior: "wrap" }],
+          [rehypeHighlight, { languages }],
+        ]}
         components={{ pre: Pre, a: Link, img: Image }}
       >
         {children}
