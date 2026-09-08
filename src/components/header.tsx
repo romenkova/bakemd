@@ -14,7 +14,10 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
       )}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
-        <a href={base + "/"} className="flex items-center gap-2 font-bold">
+        <a
+          href={config.home ?? base + "/"}
+          className="flex items-center gap-2 font-bold"
+        >
           {config.logo && (
             <img
               src={base + config.logo}

@@ -8,6 +8,8 @@ export interface SiteConfig {
   description: string
   author?: { name: string; url?: string; type?: "Person" | "Organization" }
   repo?: string
+  /** Where the logo and name link to. Defaults to the docs root. */
+  home?: string
   /** Absolute path under `_public/`, for og:image. */
   image?: string
   /** Absolute path under `_public/`, shown next to the name in the header. */

@@ -19,6 +19,7 @@ updated: 2026-09-08
     "type": "Organization"
   },
   "repo": "https://github.com/kettle-labs/teapot",
+  "home": "https://kettle.example",
   "image": "/og.png",
   "logo": "/logo.svg",
   "footer": "Kettle Labs. MIT.",
@@ -34,9 +35,10 @@ updated: 2026-09-08
 | `description` | yes      | Home page meta description and the first line of `llms.txt`                                                                |
 | `author`      | no       | `name`, optional `url`, optional `type`. Goes into JSON-LD on every page                                                   |
 | `repo`        | no       | Adds a GitHub link to the header and a Source entry to `llms.txt`                                                          |
+| `home`        | no       | Where the logo and name in the header link to. The docs root by default                                                    |
 | `image`       | no       | Path under `_public/`. Used as `og:image` and switches Twitter cards to the large format                                   |
 | `logo`        | no       | Path under `_public/`. Shown next to the name in the header                                                                |
-| `footer`      | no       | One line of text at the bottom of every page. No footer without it                                                         |
+| `footer`      | no       | One line of text at the bottom of every page. No footer by default                                                         |
 | `theme`       | no       | CSS file relative to the content folder. See [theming](/theming)                                                           |
 | `themeColor`  | no       | `light` and `dark` hex values for the `theme-color` meta tag, the browser chrome on mobile. Match your backgrounds         |
 
