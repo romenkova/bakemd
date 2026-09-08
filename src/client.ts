@@ -1,4 +1,5 @@
 // Loaded after index.css so the site's own tokens win. See lib/vite.js.
+import "virtual:bakemd-code-theme.css"
 import "virtual:bakemd-theme.css"
 
 const html = document.documentElement

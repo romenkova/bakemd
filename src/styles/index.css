@@ -94,7 +94,13 @@
 
 .docs-prose pre {
   border: 1px solid var(--code-border);
+  font-size: 0.8125em;
   font-weight: 500;
+}
+
+/* Stock highlight.js themes pad the code element; the pre already does. */
+.docs-prose pre > code.hljs {
+  padding: 0;
 }
 
 .docs-prose :not(pre) > code {

@@ -3,12 +3,12 @@ title: Writing pages
 nav: Writing pages
 description: Frontmatter, routes, nesting, and what Markdown is supported.
 order: 3
-updated: 2026-09-08
+updated: 2026-09-09
 ---
 
 ## Frontmatter
 
-Five fields are required on every page. 
+Five fields are required on every page.
 
 ```yaml
 ---
@@ -50,7 +50,11 @@ Folders starting with `_` and `node_modules` are never scanned for pages, so
 
 ## Markdown
 
-GitHub-flavored Markdown. Code blocks get a copy button.
+GitHub-flavored Markdown. Fenced code blocks get a copy button and, with
+`codeTheme` set in `bakemd.json`, syntax highlighting at build time with no
+client JS. It covers the
+[common highlight.js languages](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md)
+plus `nginx` and `dockerfile`. An unknown language renders as plain text.
 
 Images go in `_public/` and are referenced from the root:
 

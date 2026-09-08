@@ -4,11 +4,15 @@ import type { ExtraProps } from "react-markdown"
 import { cn } from "../cn"
 
 /** The button is wired up in client.ts; the page ships no React. */
-export function Pre({ node, ...props }: ComponentProps<"pre"> & ExtraProps) {
+export function Pre({
+  node,
+  className,
+  ...props
+}: ComponentProps<"pre"> & ExtraProps) {
   void node
   return (
     <div className="group/code relative">
-      <pre {...props} />
+      <pre className={cn("hljs", className)} {...props} />
       <button
         type="button"
         aria-label="Copy code"

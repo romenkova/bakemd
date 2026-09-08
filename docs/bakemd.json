@@ -7,5 +7,6 @@
   "logo": "/logo.svg",
   "footer": "bakemd. MIT licensed.",
   "theme": "_theme.css",
+  "codeTheme": "base16/gruvbox-dark-hard",
   "themeColor": { "light": "#fffcf0", "dark": "#100f0f" }
 }

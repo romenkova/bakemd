@@ -2,7 +2,7 @@
 import { existsSync, readFileSync } from "node:fs"
 import { join, resolve } from "node:path"
 import { parseArgs } from "node:util"
-import { build, dev } from "../lib/vite.js"
+import { build, dev, codeThemeFile } from "../lib/vite.js"
 
 const USAGE = `Usage:
   bakemd build [folder] [--out dist]
@@ -36,6 +36,10 @@ for (const key of ["name", "site", "description"])
   if (!config[key]) fail(`bakemd.json: "${key}" is required`)
 if (config.theme && !existsSync(join(content, config.theme)))
   fail(`bakemd.json: theme file ${join(content, config.theme)} not found`)
+if (config.codeTheme && !codeThemeFile(config.codeTheme))
+  fail(
+    `bakemd.json: codeTheme "${config.codeTheme}" not found. Names are the files in node_modules/highlight.js/styles, like github-dark`
+  )
 if (!URL.canParse(config.site)) fail(`bakemd.json: "site" must be a URL`)
 config.base = new URL(config.site).pathname.replace(/\/$/, "")
 

@@ -33,6 +33,7 @@ dist/
   assets/               hashed CSS, JS and fonts
   sitemap.xml
   llms.txt
+  robots.txt            only with "robots": true
   favicon.svg           everything from _public/, as is
 ```
 
@@ -96,3 +97,7 @@ nothing to configure.
 
 `llms.txt` follows [llmstxt.org](https://llmstxt.org): the site name and
 description, then one line per page with its URL and description.
+
+`robots.txt` is opt-in with `"robots": true`. It allows every crawler and
+points at the sitemap. Crawlers only read it at the domain root, so skip it
+when `site` has a path, as on GitHub Pages.

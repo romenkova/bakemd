@@ -17,6 +17,8 @@ export interface SiteConfig {
   footer?: string
   /** CSS file relative to the content folder, loaded after the default theme. */
   theme?: string
+  /** A highlight.js stylesheet name, like `github-dark`. Plain text without it. */
+  codeTheme?: string
   /** Browser chrome color on mobile, usually the theme's two backgrounds. */
   themeColor?: { light?: string; dark?: string }
   /** Write a robots.txt. Only honoured when the site is served from the root. */

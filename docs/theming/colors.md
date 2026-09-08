@@ -3,7 +3,7 @@ title: Colors
 nav: Colors
 description: The tokens the docs UI reads, and the theme used on this site.
 order: 1
-updated: 2026-09-08
+updated: 2026-09-09
 ---
 
 These are the tokens the docs layout reads.
@@ -30,7 +30,8 @@ The theme you are looking at is borrowed from [Flexoki](https://stephango.com/fl
 @import "@fontsource-variable/fira-code";
 
 :root {
-  --font-sans: "Outfit Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans:
+    "Outfit Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, Menlo, monospace;
   --radius: 0.375rem;
 

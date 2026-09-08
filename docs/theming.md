@@ -3,7 +3,7 @@ title: Theming
 nav: Theming
 description: Override colors, radius and fonts with one CSS file.
 order: 5
-updated: 2026-09-08
+updated: 2026-09-09
 ---
 
 The default look is Mulish on a cool gray. What you are reading is a theme
@@ -35,6 +35,14 @@ two values so the browser chrome on mobile follows along.
 
 Use `.dark:root` rather than `.dark`. The defaults are declared on
 `.dark:root`, and a bare `.dark` loses to it.
+
+## Code blocks
+
+`codeTheme` in `bakemd.json` names a [highlight.js theme](https://highlightjs.org/examples),
+`base16/gruvbox-dark-hard` on this site. Any file in `node_modules/highlight.js/styles`
+works, `.css` dropped. The theme sets the block's colors and overrides
+`--code` and `--code-foreground`. Without it, code blocks are plain text in
+those two colors.
 
 This site's own theme is on the [colors](/theming/colors) page, and
 [fonts](/theming/fonts) covers bringing your own typeface.
