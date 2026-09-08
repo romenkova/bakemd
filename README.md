@@ -22,7 +22,7 @@ The output is a `dist` folder with html files that any tool can serve.
 
 Lighthouse:
 
-![Lighthouse scores: Performance 100, Best Practices 100, SEO 100, Agentic Browsing 3/3](docs/_public/lighthouse.png)
+![Lighthouse scores: Performance 100, Best Practices 100, SEO 100, Agentic Browsing 3/3](https://raw.githubusercontent.com/romenkova/bakemd/main/docs/_public/lighthouse.png)
 
 ### Additional features
 
