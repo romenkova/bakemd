@@ -1,3 +1,4 @@
+import { useBase } from "../base"
 import { cn } from "../cn"
 import { depth, type DocPage } from "../pages"
 
@@ -7,12 +8,13 @@ export interface NavProps {
 }
 
 export function DocsLinks({ current, docs }: NavProps) {
+  const base = useBase()
   return (
     <ul className="flex flex-col gap-1">
       {docs.map((doc) => (
         <li key={doc.path} className={cn(depth(doc) > 1 && "ml-4")}>
           <a
-            href={doc.path}
+            href={base + doc.path}
             aria-current={doc === current ? "page" : undefined}
             className={cn(
               "flex items-center gap-2 rounded-md px-3 py-1.5",

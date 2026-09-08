@@ -27,18 +27,18 @@ updated: 2026-09-08
 }
 ```
 
-| Field         | Required | What it does                                                                                                       |
-| ------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
-| `name`        | yes      | Site name. Header, `<title>` suffix, `og:site_name`, JSON-LD                                                       |
-| `site`        | yes      | Origin the site is served from, no trailing slash. Canonical URLs, sitemap, `llms.txt`                             |
-| `description` | yes      | Home page meta description and the first line of `llms.txt`                                                        |
-| `author`      | no       | `name`, optional `url`, optional `type`. Goes into JSON-LD on every page                                           |
-| `repo`        | no       | Adds a GitHub link to the header and a Source entry to `llms.txt`                                                  |
-| `image`       | no       | Path under `_public/`. Used as `og:image` and switches Twitter cards to the large format                           |
-| `logo`        | no       | Path under `_public/`. Shown next to the name in the header                                                        |
-| `footer`      | no       | One line of text at the bottom of every page. No footer without it                                                 |
-| `theme`       | no       | CSS file relative to the content folder. See [theming](/theming)                                                   |
-| `themeColor`  | no       | `light` and `dark` hex values for the `theme-color` meta tag, the browser chrome on mobile. Match your backgrounds |
+| Field         | Required | What it does                                                                                                               |
+| ------------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `name`        | yes      | Site name. Header, `<title>` suffix, `og:site_name`, JSON-LD                                                               |
+| `site`        | yes      | URL the site is served from, no trailing slash. Its path, if any, prefixes every link. Canonical URLs, sitemap, `llms.txt` |
+| `description` | yes      | Home page meta description and the first line of `llms.txt`                                                                |
+| `author`      | no       | `name`, optional `url`, optional `type`. Goes into JSON-LD on every page                                                   |
+| `repo`        | no       | Adds a GitHub link to the header and a Source entry to `llms.txt`                                                          |
+| `image`       | no       | Path under `_public/`. Used as `og:image` and switches Twitter cards to the large format                                   |
+| `logo`        | no       | Path under `_public/`. Shown next to the name in the header                                                                |
+| `footer`      | no       | One line of text at the bottom of every page. No footer without it                                                         |
+| `theme`       | no       | CSS file relative to the content folder. See [theming](/theming)                                                           |
+| `themeColor`  | no       | `light` and `dark` hex values for the `theme-color` meta tag, the browser chrome on mobile. Match your backgrounds         |
 
 `author.type` is `Person` by default. Set it to `Organization` for a company;
 those are the two types schema.org accepts for an author.

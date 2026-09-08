@@ -1,8 +1,10 @@
 /** `bakemd.json` in the content folder. */
 export interface SiteConfig {
   name: string
-  /** Origin the site is served from, no trailing slash. */
+  /** URL the site is served from, no trailing slash. A path is fine. */
   site: string
+  /** The path of `site`. Empty when served from the root. */
+  base: string
   description: string
   author?: { name: string; url?: string; type?: "Person" | "Organization" }
   repo?: string

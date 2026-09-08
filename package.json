@@ -27,7 +27,7 @@
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
-    "docs": "pnpm build && node dist/bin/bakemd.js build docs --out docs-dist",
+    "build:docs": "pnpm build && node dist/bin/bakemd.js build docs --out docs-dist",
     "prepublishOnly": "pnpm lint && pnpm typecheck && pnpm build"
   },
   "dependencies": {

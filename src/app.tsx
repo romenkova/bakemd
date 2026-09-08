@@ -1,3 +1,4 @@
+import { BaseContext } from "./base"
 import type { SiteConfig } from "./config"
 import { DocsPage } from "./components/page"
 import { findDoc, type DocPage } from "./pages"
@@ -16,12 +17,14 @@ export function App({
   const doc = findDoc(docs, path)
 
   return (
-    <div className="flex min-h-svh flex-col">
-      <SiteHeader config={config} />
-      <main className="flex-1">
-        {doc && <DocsPage page={doc} docs={docs} />}
-      </main>
-      <SiteFooter config={config} />
-    </div>
+    <BaseContext value={config.base}>
+      <div className="flex min-h-svh flex-col">
+        <SiteHeader config={config} />
+        <main className="flex-1">
+          {doc && <DocsPage page={doc} docs={docs} />}
+        </main>
+        <SiteFooter config={config} />
+      </div>
+    </BaseContext>
   )
 }

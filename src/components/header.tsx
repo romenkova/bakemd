@@ -1,9 +1,11 @@
 import { SiGithub } from "react-icons/si"
+import { useBase } from "../base"
 import type { SiteConfig } from "../config"
 import { ThemeToggle } from "./theme-toggle"
 import { cn } from "../cn"
 
 export function SiteHeader({ config }: { config: SiteConfig }) {
+  const base = useBase()
   return (
     <header
       className={cn(
@@ -12,9 +14,13 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
       )}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
-        <a href="/" className="flex items-center gap-2 font-bold">
+        <a href={base + "/"} className="flex items-center gap-2 font-bold">
           {config.logo && (
-            <img src={config.logo} alt={config.name} className="size-7" />
+            <img
+              src={base + config.logo}
+              alt={config.name}
+              className="size-7"
+            />
           )}
           <span>{config.name}</span>
         </a>

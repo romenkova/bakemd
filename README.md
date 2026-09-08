@@ -46,7 +46,7 @@ The full documentation lives in [`docs/`](docs) and is written with bakemd, so i
 - [CLI](docs/cli.md) lists commands and flags.
 
 ```sh
-pnpm docs
+pnpm build:docs
 ```
 
 That compiles the CLI into `dist/` and bakes `docs/` into `docs-dist/`.

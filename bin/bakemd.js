@@ -36,6 +36,8 @@ for (const key of ["name", "site", "description"])
   if (!config[key]) fail(`bakemd.json: "${key}" is required`)
 if (config.theme && !existsSync(join(content, config.theme)))
   fail(`bakemd.json: theme file ${join(content, config.theme)} not found`)
+if (!URL.canParse(config.site)) fail(`bakemd.json: "site" must be a URL`)
+config.base = new URL(config.site).pathname.replace(/\/$/, "")
 
 if (command === "build") await build(content, config, resolve(values.out))
 else await dev(content, config, Number(values.port))

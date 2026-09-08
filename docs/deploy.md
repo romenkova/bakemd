@@ -39,6 +39,23 @@ dist/
 Pages are `page.html`, not `page/index.html`, so the server needs to map
 `/sync` to `sync.html`. Most static hosts do this out of the box.
 
+## Example with GitHub Pages
+
+Set `site` to the Pages URL, `https://you.github.io/repo`. The `/repo` part
+becomes the prefix for every link and asset, so nothing else changes. In the
+repo settings, set the Pages source to GitHub Actions and add a workflow that
+runs the build and uploads the output folder:
+
+```yaml
+- run: npx bakemd build docs --out dist
+- uses: actions/upload-pages-artifact@v3
+  with:
+    path: dist
+- uses: actions/deploy-pages@v4
+```
+
+Pages serves `sync.html` for `/sync` on its own.
+
 ## Example with nginx
 
 ### nginx config

@@ -1,6 +1,6 @@
 {
   "name": "bakemd",
-  "site": "https://bakemd.example",
+  "site": "https://romenkova.github.io/bakemd",
   "description": "Bake a folder of Markdown into a static docs site. No client-side framework, just HTML files.",
   "author": { "name": "Rita Romenkova", "url": "https://github.com/romenkova" },
   "repo": "https://github.com/romenkova/bakemd",
