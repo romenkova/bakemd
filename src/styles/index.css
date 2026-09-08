@@ -77,7 +77,8 @@
 }
 
 .docs-prose img {
-  max-width: 30rem;
+  max-width: min(30rem, 100%);
+  height: auto;
   margin-block: 1.25em;
   border-radius: var(--radius-lg);
 }
