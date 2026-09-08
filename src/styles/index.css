@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource-variable/mulish";
+
+@import "./tokens.css";
+@import "./theme.css";
+
+/* This package lives in node_modules. */
+@source "../";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Site theme can redeclare --font-sans and --font-mono on :root. */
+@theme {
+  --font-heading: var(--font-sans);
+  --font-sans: "Mulish Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+}
+
+@theme inline {
+  --color-docs-nav: var(--docs-nav);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #f1f2f6;
+
+  --code: #1d2230;
+  --code-foreground: #e6e8ee;
+  --code-border: #ffffff1a;
+  --inline-code: #e9eaf1;
+  --inline-code-foreground: #1e2436;
+  --inline-code-border: #dcdee8;
+  --docs-nav: #4b5266;
+}
+
+.dark:root {
+  --background: #1e2432;
+  --inline-code: #343c54;
+  --inline-code-foreground: #f7f7f8;
+  --inline-code-border: #ffffff1f;
+  --docs-nav: #999da9;
+}
+
+.docs-prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--foreground);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--muted-foreground);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--muted-foreground);
+  --tw-prose-quote-borders: var(--border);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--inline-code-foreground);
+  --tw-prose-pre-code: var(--code-foreground);
+  --tw-prose-pre-bg: var(--code);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+}
+
+.docs-prose a:hover {
+  color: var(--primary);
+}
+
+.docs-prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-heading);
+}
+
+/* Keep anchored headings clear of the sticky header. */
+.docs-prose h2,
+.docs-prose h3 {
+  scroll-margin-top: 4.5rem;
+}
+
+.docs-prose img {
+  max-width: 30rem;
+}
+
+.docs-prose pre {
+  border: 1px solid var(--code-border);
+}
+
+.docs-prose :not(pre) > code {
+  background-color: var(--inline-code);
+  border: 1px solid var(--inline-code-border);
+  border-radius: 0.3125rem;
+  padding: 0.1em 0.35em;
+  font-weight: normal;
+}
+.docs-prose :not(pre) > code::before,
+.docs-prose :not(pre) > code::after {
+  content: none;
+}
+
+.docs-prose [aria-label="Copy code"] {
+  background-color: #ffffff14;
+  border-color: var(--code-border);
+  color: #e6e8eeb3;
+}
+.docs-prose [aria-label="Copy code"]:hover,
+.docs-prose [aria-label="Copy code"][data-copied] {
+  color: var(--code-foreground);
+  opacity: 1;
+}
+.docs-prose [aria-label="Copy code"][data-copied]::after {
+  content: "Copied";
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+  }
+  button {
+    cursor: pointer;
+  }
+}

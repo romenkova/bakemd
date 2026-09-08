@@ -1,0 +1,60 @@
+{
+  "name": "bakemd",
+  "version": "0.1.0",
+  "description": "Bake a folder of Markdown into a static docs site",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "bakemd": "bin/bakemd.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "src",
+    "index.html",
+    "nginx.conf"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc -b --noEmit",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\""
+  },
+  "dependencies": {
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "@fontsource-variable/mulish": "5.3.0",
+    "@tailwindcss/typography": "^0.5",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "clsx": "2.1.1",
+    "lucide-react": "1.39.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-icons": "^5.7.0",
+    "react-markdown": "^10",
+    "remark-gfm": "4.0.1",
+    "tailwind-merge": "3.6.0",
+    "tailwindcss": "^4",
+    "vfile": "^6.0.3",
+    "vfile-matter": "^5.0.1",
+    "vite": "^8.2.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@fontsource-variable/fira-code": "5.3.0",
+    "@fontsource-variable/outfit": "5.3.0",
+    "@types/node": "^22",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "eslint": "^10.9.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.5",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "~6",
+    "typescript-eslint": "^8.69.0"
+  }
+}
