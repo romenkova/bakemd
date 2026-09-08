@@ -19,4 +19,6 @@ export interface SiteConfig {
   theme?: string
   /** Browser chrome color on mobile, usually the theme's two backgrounds. */
   themeColor?: { light?: string; dark?: string }
+  /** Write a robots.txt. Only honoured when the site is served from the root. */
+  robots?: boolean
 }
