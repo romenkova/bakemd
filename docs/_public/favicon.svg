@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="crust" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD66A"/>
+      <stop offset="0.38" stop-color="#F5A623"/>
+      <stop offset="0.78" stop-color="#D96B16"/>
+      <stop offset="1" stop-color="#A94312"/>
+    </linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="0.9">
+      <stop offset="0" stop-color="#FFE08A"/>
+      <stop offset="0.45" stop-color="#F8B52D"/>
+      <stop offset="1" stop-color="#C85A12"/>
+    </linearGradient>
+    <linearGradient id="highlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF5C7" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#FFD36B" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <!-- transparent canvas; soft grounding shadow -->
+  <ellipse cx="263" cy="414" rx="158" ry="24" fill="#7B3E18" opacity=".18" filter="url(#shadow)"/>
+
+  <!-- pastry body -->
+  <path d="M102 344 C96 306 110 249 143 208 C177 166 224 141 281 131 C338 121 397 130 424 163 C451 196 442 252 423 297 C402 346 355 384 300 399 C246 414 183 406 139 387 C118 378 106 363 102 344Z"
+        fill="url(#crust)" stroke="#8F3B12" stroke-width="8" stroke-linejoin="round"/>
+
+  <!-- upper baked ridge / sealed seam -->
+  <path d="M126 293 C126 246 154 201 197 174 C231 153 270 145 310 147 C352 149 387 160 405 181 C390 172 371 170 354 177 C333 185 323 202 304 209 C282 217 263 205 246 195 C229 185 211 188 193 201 C174 214 162 238 153 261 C146 278 136 290 126 293Z"
+        fill="url(#top)" opacity=".98"/>
+
+  <!-- characteristic pastry folds -->
+  <path d="M132 296 C151 278 157 250 174 229 C188 211 207 197 226 193"
+        fill="none" stroke="#B95113" stroke-width="15" stroke-linecap="round" opacity=".9"/>
+  <path d="M174 229 C193 212 213 204 233 204"
+        fill="none" stroke="#FFD76B" stroke-width="8" stroke-linecap="round" opacity=".85"/>
+  <path d="M246 194 C264 207 281 215 301 207 C319 200 331 184 352 178"
+        fill="none" stroke="#B94D11" stroke-width="13" stroke-linecap="round" opacity=".88"/>
+  <path d="M247 188 C264 197 279 204 297 197 C314 190 325 176 343 171"
+        fill="none" stroke="#FFE08A" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+
+  <!-- warm lower shading -->
+  <path d="M115 337 C149 373 211 388 278 380 C340 373 392 344 416 302 C401 348 358 382 302 397 C243 413 180 403 137 383 C121 375 113 359 115 337Z"
+        fill="#9E3F10" opacity=".22"/>
+
+  <!-- glossy baked highlights -->
+  <path d="M175 225 C188 205 208 188 230 179 C239 175 245 179 240 186 C229 199 211 212 191 226 C181 233 170 235 175 225Z"
+        fill="#FFF4C2" opacity=".82"/>
+  <path d="M153 284 C158 268 164 252 175 240 C180 234 186 238 182 246 C176 259 170 274 164 287 C160 295 150 293 153 284Z"
+        fill="#FFEAA0" opacity=".72"/>
+  <path d="M327 158 C345 159 366 166 380 176 C386 181 382 187 374 184 C357 178 341 175 326 172 C318 170 318 157 327 158Z"
+        fill="#FFEFB0" opacity=".55"/>
+  <path d="M368 218 C378 208 392 210 397 218 C401 225 396 232 389 231 C379 230 367 226 368 218Z"
+        fill="#FFF1B4" opacity=".62"/>
+
+  <!-- tiny baked texture -->
+  <g fill="#A84B14" opacity=".28">
+    <ellipse cx="272" cy="266" rx="8" ry="4" transform="rotate(-20 272 266)"/>
+    <ellipse cx="300" cy="292" rx="6" ry="3" transform="rotate(18 300 292)"/>
+    <ellipse cx="339" cy="254" rx="7" ry="4" transform="rotate(-15 339 254)"/>
+    <ellipse cx="221" cy="300" rx="6" ry="3" transform="rotate(22 221 300)"/>
+    <ellipse cx="369" cy="286" rx="5" ry="3" transform="rotate(-25 369 286)"/>
+    <ellipse cx="187" cy="335" rx="7" ry="3" transform="rotate(12 187 335)"/>
+  </g>
+</svg>

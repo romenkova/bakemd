@@ -1,0 +1,11 @@
+{
+  "name": "bakemd",
+  "site": "https://bakemd.example",
+  "description": "Bake a folder of Markdown into a static docs site. No client-side framework, just HTML files.",
+  "author": { "name": "Rita Romenkova", "url": "https://github.com/romenkova" },
+  "repo": "https://github.com/romenkova/bakemd",
+  "logo": "/logo.svg",
+  "footer": "bakemd. MIT licensed.",
+  "theme": "_theme.css",
+  "themeColor": { "light": "#fffcf0", "dark": "#100f0f" }
+}
