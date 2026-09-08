@@ -1,4 +1,4 @@
-# <img src="docs/_public/logo.svg" alt="" width="32" align="top"> bakemd
+# <img src="docs/_public/logo.svg" alt="" width="40" align="top"> bakemd
 
 ## Do you really need a ton of js over docs?
 
