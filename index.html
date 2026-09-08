@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bakemd</title>
+    <meta name="description" content="" />
+    <link rel="canonical" href="https://example.com/" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#f1f2f6"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#1e2432"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="/" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+
+    <script type="application/ld+json">
+      {}
+    </script>
+    <script>
+      // Runs before first paint so there is no light/dark flash: the
+      // visitor's explicit choice, else the system preference.
+      ;(function () {
+        var dark = matchMedia("(prefers-color-scheme: dark)").matches
+        try {
+          var t = localStorage.getItem("theme")
+          if (t === "light" || t === "dark") dark = t === "dark"
+        } catch (e) {}
+        document.documentElement.classList.add(dark ? "dark" : "light")
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/client"></script>
+  </body>
+</html>

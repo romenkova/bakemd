@@ -2,25 +2,33 @@
   "name": "bakemd",
   "version": "0.1.0",
   "description": "Bake a folder of Markdown into a static docs site",
+  "keywords": [
+    "docs",
+    "markdown",
+    "static-site",
+    "cli",
+    "vite"
+  ],
   "license": "MIT",
   "type": "module",
   "bin": {
-    "bakemd": "bin/bakemd.js"
+    "bakemd": "dist/bin/bakemd.js"
   },
   "files": [
-    "bin",
-    "lib",
-    "src",
-    "index.html",
+    "dist",
     "nginx.conf"
   ],
   "engines": {
     "node": ">=22"
   },
   "scripts": {
+    "dev": "node bin/bakemd.js dev docs",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -R bin lib index.html dist/ && cp -R src/styles dist/src/styles",
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
-    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
+    "docs": "pnpm build && node dist/bin/bakemd.js build docs --out docs-dist",
+    "prepublishOnly": "pnpm lint && pnpm typecheck && pnpm build"
   },
   "dependencies": {
     "@fontsource-variable/geist-mono": "5.3.0",
