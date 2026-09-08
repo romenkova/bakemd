@@ -48,4 +48,4 @@ As you noticed, JS is almost non-existent. That's because React, which is used t
 
 ## Example
 
-You are inside the example. The source is here: [github.com/romenkova/bakemd](https://github.com/romenkova/bakemd)
+You are inside the example. The source is here: [github.com/romenkova/bakemd/docs](https://github.com/romenkova/bakemd/tree/main/docs)
