@@ -1,5 +1,7 @@
 # <img src="docs/_public/logo.svg" alt="" width="40" align="top"> bakemd
 
+> This package bakes [doska.sh/docs](https://doska.sh/docs) and [its own docs](https://romenkova.github.io/bakemd/).
+
 ## Do you really need a ton of js over docs?
 
 This package is built around that question. **bakemd** simply renders md files into html for you to serve.
