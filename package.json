@@ -10,6 +10,12 @@
     "vite"
   ],
   "license": "MIT",
+  "homepage": "https://romenkova.github.io/bakemd",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romenkova/bakemd.git"
+  },
+  "bugs": "https://github.com/romenkova/bakemd/issues",
   "type": "module",
   "bin": {
     "bakemd": "dist/bin/bakemd.js"
