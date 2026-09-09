@@ -58,7 +58,7 @@ That compiles the CLI into `dist/` and bakes `docs/` into `docs-dist/`.
 ## Developing
 
 `pnpm dev` serves `docs/` from the sources on port 5174. Edits to `src/`,
-the styles and the Markdown reload the page; edits to `lib/` or `bin/`
+the styles and the Markdown reload the page; edits to `src/lib/` or `bin/`
 restart the server and the page reloads once it is back.
 
 `src/` is TypeScript and the published package is `dist/` only, so build

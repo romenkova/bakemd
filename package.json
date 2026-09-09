@@ -29,7 +29,7 @@
   },
   "scripts": {
     "dev": "node bin/bakemd.js dev docs",
-    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -R bin lib index.html dist/ && cp -R src/styles dist/src/styles",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp index.html dist/ && cp -R src/styles dist/src/styles",
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",

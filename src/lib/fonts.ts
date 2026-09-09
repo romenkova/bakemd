@@ -1,29 +1,35 @@
 import { readFileSync } from "node:fs"
 import { join } from "node:path"
+import type { SiteConfig } from "../config.ts"
 
-function family(css, name) {
+function family(css: string, name: string): string | null {
   const declarations = css.match(new RegExp(`--font-${name}:[^;}]*`, "g")) ?? []
   const last = declarations.at(-1)
   return last?.match(/"([^"]+)"/)?.[1] ?? null
 }
 
-/** Latin subset files of the fonts in use, text renders in them on first paint. */
-function latinFiles(css) {
+/** Latin subset files of the fonts in use */
+function latinFiles(css: string): string[] {
   const families = new Set(
-    ["sans", "mono", "heading"].map((name) => family(css, name)).filter(Boolean)
+    ["sans", "mono", "heading"].map((name) => family(css, name))
   )
-  const files = []
+  const files: string[] = []
   for (const face of css.match(/@font-face{[^}]*}/g) ?? []) {
     const name = face.match(/font-family:"?([^;"]+)"?;/)?.[1]
-    // fontsource writes the latin subset as U+?? (0000-00FF).
-    if (families.has(name) && /unicode-range:U\+\?\?,/.test(face))
-      files.push(face.match(/url\(([^)]+)\)/)[1])
+    if (!name || !families.has(name)) continue
+    if (!/unicode-range:U\+\?\?,/.test(face)) continue
+    const url = face.match(/url\(([^)]+)\)/)?.[1]
+    if (url) files.push(url)
   }
   return files
 }
 
 /** Adds font preloads before the stylesheet link of the built template. */
-export function preloadFonts(template, dist, config) {
+export function preloadFonts(
+  template: string,
+  dist: string,
+  config: SiteConfig
+): string {
   const link = template.match(/<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/)
   if (!link) return template
   const css = readFileSync(

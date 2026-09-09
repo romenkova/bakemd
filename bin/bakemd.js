@@ -2,7 +2,7 @@
 import { existsSync, readFileSync } from "node:fs"
 import { join, resolve } from "node:path"
 import { parseArgs } from "node:util"
-import { build, dev, codeThemeFile } from "../lib/vite.js"
+import { build, dev, codeThemeFile } from "../src/lib/vite.ts"
 
 const USAGE = `Usage:
   bakemd build [folder] [--out dist]

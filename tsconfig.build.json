@@ -2,8 +2,10 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "noEmit": false,
-    "allowImportingTsExtensions": false,
-    "rootDir": "./src",
-    "outDir": "./dist/src"
-  }
+    "allowJs": true,
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": ".",
+    "outDir": "./dist"
+  },
+  "include": ["src", "bin"]
 }

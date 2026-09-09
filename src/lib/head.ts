@@ -1,23 +1,26 @@
-function replace(html, pattern, replacement) {
+import type { SiteConfig } from "../config.ts"
+import type { Page } from "./prerender.ts"
+
+function replace(html: string, pattern: RegExp, replacement: string): string {
   if (!pattern.test(html)) throw new Error(`prerender: no match for ${pattern}`)
   return html.replace(pattern, replacement)
 }
 
-function json(value) {
+function json(value: unknown): string {
   return JSON.stringify(value, null, 2).replace(/</g, "\\u003c")
 }
 
-function escape(text) {
+function escape(text: string): string {
   return text.replace(/&/g, "&amp;").replace(/"/g, "&quot;")
 }
 
-function author(config) {
+function author(config: SiteConfig) {
   if (!config.author) return {}
   const { type = "Person", ...rest } = config.author
   return { author: { "@type": type, ...rest } }
 }
 
-function structuredData(page, config) {
+function structuredData(page: Page, config: SiteConfig): string {
   const site = { "@type": "WebSite", name: config.name, url: config.site + "/" }
 
   if (page.home)
@@ -56,7 +59,7 @@ function structuredData(page, config) {
   })
 }
 
-export function head(html, page, config) {
+export function head(html: string, page: Page, config: SiteConfig): string {
   const title = escape(page.title)
   const description = escape(page.description)
   const image = config.image && config.site + config.image
@@ -68,7 +71,7 @@ export function head(html, page, config) {
     /<link rel="canonical"[^>]*\/>/,
     `<link rel="canonical" href="${page.url}" />`
   )
-  for (const [attribute, key, value] of [
+  const metas: [string, string, string][] = [
     ["name", "description", description],
     ["property", "og:type", page.home ? "website" : "article"],
     ["property", "og:site_name", escape(config.name)],
@@ -78,14 +81,15 @@ export function head(html, page, config) {
     ["name", "twitter:card", image ? "summary_large_image" : "summary"],
     ["name", "twitter:title", title],
     ["name", "twitter:description", description],
-  ]) {
+  ]
+  for (const [attribute, key, value] of metas) {
     out = replace(
       out,
       new RegExp(`<meta\\s+${attribute}="${key}"[\\s\\S]*?/>`),
       `<meta ${attribute}="${key}" content="${value}" />`
     )
   }
-  for (const scheme of ["light", "dark"])
+  for (const scheme of ["light", "dark"] as const)
     if (config.themeColor?.[scheme])
       out = replace(
         out,

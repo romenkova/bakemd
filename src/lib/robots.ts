@@ -1,5 +1,5 @@
 /** Allow everything and point crawlers at the sitemap. */
-export function robots(site) {
+export function robots(site: string): string {
   return [
     "User-agent: *",
     "Allow: /",

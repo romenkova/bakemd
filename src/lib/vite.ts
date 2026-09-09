@@ -4,15 +4,20 @@ import { fileURLToPath, pathToFileURL } from "node:url"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { build as viteBuild, createServer } from "vite"
-import { head } from "./head.js"
-import { pageFor, prerender } from "./prerender.js"
+import type { InlineConfig, Plugin } from "vite"
+import type { SiteConfig } from "../config.ts"
+import type { createSite } from "../entry-server.tsx"
+import { head } from "./head.ts"
+import { pageFor, prerender } from "./prerender.ts"
 
-const root = fileURLToPath(new URL("..", import.meta.url))
+type Entry = { createSite: typeof createSite }
+
+const root = fileURLToPath(new URL("../..", import.meta.url))
 
 const THEME = "virtual:bakemd-theme.css"
 const CODE_THEME = "virtual:bakemd-code-theme.css"
 
-export function codeThemeFile(name) {
+export function codeThemeFile(name: string): string | null {
   try {
     const file = fileURLToPath(
       import.meta.resolve(`highlight.js/styles/${name}.css`)
@@ -23,8 +28,8 @@ export function codeThemeFile(name) {
   }
 }
 
-function theme(content, config) {
-  const files = {
+function theme(content: string, config: SiteConfig): Plugin {
+  const files: Record<string, string | null> = {
     [THEME]: config.theme ? join(content, config.theme) : null,
     [CODE_THEME]: config.codeTheme ? codeThemeFile(config.codeTheme) : null,
   }
@@ -39,7 +44,7 @@ function theme(content, config) {
   }
 }
 
-function options(content, config) {
+function options(content: string, config: SiteConfig): InlineConfig {
   const publicDir = join(content, "_public")
   return {
     root,
@@ -53,7 +58,7 @@ function options(content, config) {
   }
 }
 
-export async function build(content, config, out) {
+export async function build(content: string, config: SiteConfig, out: string) {
   const base = options(content, config)
   await viteBuild({ ...base, build: { outDir: out, emptyOutDir: true } })
   await viteBuild({
@@ -68,12 +73,12 @@ export async function build(content, config, out) {
     ssr: { noExternal: true },
   })
   const entry = pathToFileURL(join(out, "server", "entry-server.mjs")).href
-  const { createSite } = await import(entry)
+  const { createSite }: Entry = await import(entry)
   prerender(out, createSite(content, config), config)
 }
 
 // Pages are React-rendered on the server only.
-function prerenderDev(content, config) {
+function prerenderDev(content: string, config: SiteConfig): Plugin {
   return {
     name: "prerender-dev",
     hotUpdate({ file, modules, server }) {
@@ -89,8 +94,9 @@ function prerenderDev(content, config) {
           if (!req.headers.accept?.includes("text/html")) return next()
           const url = (req.url ?? "/").split("?")[0]
           try {
-            const { createSite } =
-              await server.ssrLoadModule("/src/entry-server")
+            const { createSite } = (await server.ssrLoadModule(
+              "/src/entry-server"
+            )) as Entry
             const site = createSite(content, config)
             const page = pageFor(site, config, url)
             if (!page) return next()
@@ -106,7 +112,7 @@ function prerenderDev(content, config) {
               )
             )
           } catch (error) {
-            server.ssrFixStacktrace(error)
+            server.ssrFixStacktrace(error as Error)
             next(error)
           }
         })
@@ -115,14 +121,14 @@ function prerenderDev(content, config) {
   }
 }
 
-export async function dev(content, config, port) {
+export async function dev(content: string, config: SiteConfig, port: number) {
   const base = options(content, config)
   const server = await createServer({
     ...base,
-    plugins: [...base.plugins, prerenderDev(content, config)],
+    plugins: [...(base.plugins ?? []), prerenderDev(content, config)],
     server: { ...base.server, port, strictPort: true },
   })
   await server.listen()
   // printUrls() logs at info level, which logLevel "warn" mutes.
-  console.log(`bakemd dev: ${server.resolvedUrls.local[0]}`)
+  console.log(`bakemd dev: ${server.resolvedUrls?.local[0]}`)
 }

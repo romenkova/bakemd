@@ -1,5 +1,10 @@
+export interface SitemapEntry {
+  path: string
+  updated: string
+}
+
 /** The sitemap is generated from the route list. */
-export function sitemap(site, entries) {
+export function sitemap(site: string, entries: SitemapEntry[]): string {
   const urls = entries.map(({ path, updated }) =>
     [
       "  <url>",
