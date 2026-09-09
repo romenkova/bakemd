@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.3] - 2026-09-09
+
+### Added
+
+- Changelog and contribution guide.
+
+### Fixed
+
+- UI spacing.
+
 ## [0.2.2] - 2026-09-09
 
 ### Added
