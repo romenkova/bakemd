@@ -12,6 +12,7 @@ bakemd dev [folder] [--port 5174]
 ```
 
 The folder is the one holding the Markdown pages and `bakemd.json`. Current folder by default.
+Both commands write a default `bakemd.json` and create `_public/` if they are missing.
 
 ## build
 

@@ -24,7 +24,7 @@ docs/
 ## 2. Describe the site
 
 `bakemd.json` needs three fields. Everything else is optional and covered in
-[configuration](/configuration).
+[configuration](/configuration). 
 
 ```json
 {

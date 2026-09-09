@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync } from "node:fs"
-import { join, resolve } from "node:path"
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
+import { basename, join, resolve } from "node:path"
 import { parseArgs } from "node:util"
 import { build, dev, codeThemeFile } from "../src/lib/vite.ts"
 
@@ -29,9 +29,41 @@ if (!["build", "dev"].includes(command)) fail(USAGE)
 
 const content = resolve(folder)
 const configFile = join(content, "bakemd.json")
-if (!existsSync(configFile)) fail(`${configFile}: not found`)
+if (!existsSync(configFile)) {
+  const name = basename(content)
+  const defaults = {
+    name,
+    site: "https://example.com",
+    description: `${name} documentation`,
+    author: { name: "", url: "", type: "" },
+    repo: "",
+    home: "",
+    image: "",
+    logo: "",
+    footer: "",
+    theme: "",
+    codeTheme: "",
+    themeColor: { light: "", dark: "" },
+    robots: false,
+  }
+  writeFileSync(configFile, JSON.stringify(defaults, null, 2) + "\n")
+  console.log(`${configFile}: created with defaults, edit "site" before deploying`)
+}
+const publicDir = join(content, "_public")
+if (!existsSync(publicDir)) {
+  mkdirSync(publicDir)
+  console.log(`${publicDir}: created`)
+}
 
 const config = JSON.parse(readFileSync(configFile, "utf-8"))
+// Empty values from the generated template count as unset.
+for (const [key, value] of Object.entries(config)) {
+  if (value === "") delete config[key]
+  if (typeof value !== "object" || value === null) continue
+  for (const [inner, innerValue] of Object.entries(value))
+    if (innerValue === "") delete value[inner]
+  if (Object.keys(value).length === 0) delete config[key]
+}
 for (const key of ["name", "site", "description"])
   if (!config[key]) fail(`bakemd.json: "${key}" is required`)
 if (config.theme && !existsSync(join(content, config.theme)))
