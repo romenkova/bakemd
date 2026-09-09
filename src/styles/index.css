@@ -72,19 +72,31 @@
 
 /* Keep anchored headings clear of the sticky header. */
 .docs-prose :is(h2, h3, h4) {
+  position: relative;
   scroll-margin-top: 4.5rem;
 }
 
-/* Headings link to themselves. */
-.docs-prose :is(h2, h3, h4) a {
+/* Headings link to themselves */
+.docs-prose :is(h2, h3, h4) a,
+.docs-prose :is(h2, h3, h4) a:hover {
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
 }
 
-.docs-prose :is(h2, h3, h4) a:hover::after {
-  content: " #";
+.docs-prose :is(h2, h3, h4) a::before {
+  content: "#";
+  position: absolute;
+  left: -1em;
   color: var(--muted-foreground);
+  opacity: 0;
+}
+
+/* Same breakpoint as the sidebar; below it the margin is too tight. */
+@media (min-width: 48rem) {
+  .docs-prose :is(h2, h3, h4) a:hover::before {
+    opacity: 1;
+  }
 }
 
 .docs-prose img {

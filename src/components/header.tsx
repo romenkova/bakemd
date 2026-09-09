@@ -13,7 +13,7 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
         "border-b border-border bg-background/80 backdrop-blur"
       )}
     >
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <a
           href={config.home ?? base + "/"}
           className="flex items-center gap-2 font-bold"
