@@ -5,6 +5,7 @@
   "author": { "name": "Rita Romenkova", "url": "https://github.com/romenkova" },
   "repo": "https://github.com/romenkova/bakemd",
   "logo": "/logo.svg",
+  "image": "/og.png",
   "footer": "bakemd. MIT licensed.",
   "theme": "_theme.css",
   "codeTheme": "base16/gruvbox-dark-hard",
