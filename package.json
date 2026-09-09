@@ -1,6 +1,6 @@
 {
   "name": "bakemd",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Bake a folder of Markdown into a static docs site",
   "keywords": [
     "docs",
