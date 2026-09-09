@@ -4,6 +4,8 @@
 
 > This package bakes [doska.sh/docs](https://doska.sh/docs) and [its own docs](https://romenkova.github.io/bakemd/).
 
+<img width="2154" height="1882" alt="SCR-20260909-lpzx" src="https://github.com/user-attachments/assets/e9920044-4416-4278-a689-8940d319fa4f" />
+
 ## Do you really need a ton of js over docs?
 
 This package is built around that question. **bakemd** simply renders md files into html for you to serve.
@@ -19,8 +21,8 @@ The output is a `dist` folder with html files that any tool can serve.
 ### What's in the dist
 
 - all your md files as html files
-- `7kb` of css
-- `1kb` of js: theme switching and a copy-to-clipboard script, that's it.
+- `~10kb` of css
+- `~1kb` of js: theme switching and a copy-to-clipboard script, that's it.
 
 Lighthouse:
 
