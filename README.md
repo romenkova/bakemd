@@ -1,4 +1,5 @@
-# <img src="docs/_public/logo.svg" alt="" width="40" align="top"> bakemd
+# <img src="docs/_public/logo.svg" alt="" width="40" align="top"> bakemd 
+## turns a folder of md files into a docs site with only ~1kb of js
 
 [![npm](https://img.shields.io/npm/v/bakemd)](https://www.npmjs.com/package/bakemd)
 
@@ -6,9 +7,8 @@
 
 <img width="2154" height="1882" alt="SCR-20260909-lpzx" src="https://github.com/user-attachments/assets/e9920044-4416-4278-a689-8940d319fa4f" />
 
-## Do you really need a ton of js over docs?
 
-This package is built around that question. **bakemd** simply renders md files into html for you to serve.
+**bakemd** simply renders md files into html for you to serve.
 
 Set the theme and all necessary SEO attributes in a config (see [configuration](docs/configuration.md)), then:
 
